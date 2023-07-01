@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.7.0.js"></script>
+</head>
+<body style="min-height: 150vh; background-image: url(img/astronaut-spaceman-do-spacewalk.jpg); background-size: contain;
+">
+  <hr/> 
+  <div class="container">
+    <h1>SPACE</h1>
+
+</div>
+<hr/> 
+  
+  <br>
+  <br>
+   <button id="fade-Out">Fade Out</button>
+   <button id="fade-In">Fade In</button>
+   <button id="fade-Toggle">FadeToggle</button>
+   <br/>
+   
+    <div class="container1">
+    
+    </div>
+   
+<br/>
+
+
+
+    <button id="slide-Up" class="right">slide Up</button>
+   <button id="slide-Down" class="right">slide Down</button>
+   <button id="slide-Toggle" class="right">slide Toggle</button>
+   <button id="stop" class="right">stop</button>
+   
+   <div class="container2">
+  </div>
+    
+
+
+    <button id="move-Left">Move Left</button>
+   <button id="move-Right">Move Right</button>
+   <button id="move-Around">Move Around</button>
+   <button id="move-Round">Move Round</button>
+   <button id="stop1">stop</button>
+
+   <div class="container3">
+</div>
+
+
+
+
+
+
+    <script>
+
+                      // container 1
+
+            $(document).ready(function(){
+              
+
+              // fade out
+              $('#fade-Out').click(function(){
+                $('.container1').fadeOut(1000);
+              });
+
+              //fade in
+              $('#fade-In').click(function(){
+                $('.container1').fadeIn();
+              });
+
+              //fade toggle
+              $('#fade-Toggle').click(function(){
+                $('.container1').fadeToggle(1000);
+              });
+
+
+                       // container 2
+
+              //slide up
+              $('#slide-Up').click(function(){
+                $('.container2').slideUp(1000);
+              });
+
+              //slide down
+              $('#slide-Down').click(function(){
+                $('.container2').slideDown(1000);
+              });
+
+              //slide Toggle
+              $('#slide-Toggle').click(function(){
+                $('.container2').slideToggle(3000);
+              });
+
+              //stop
+              $('#stop').click(function(){
+                $('.container2').stop();
+              });
+              
+
+                     //container 3
+
+           
+              //move right
+             $('#move-Right').click(function(){
+                    $('.container3').animate({
+                         left: 500
+                      });
+             });
+
+              //move left
+              $('#move-Left').click(function(){
+                    $('.container3').animate(
+                      {
+                         left: 0
+                      });
+             });
+
+              //move around
+              $('#move-Around').click(function(){
+
+                var move_things = $('.container3');
+                
+                move_things.animate(
+                  {
+                    left:300,
+                   
+                  });
+
+                move_things.animate(
+                  {
+                   
+                    top:150
+                  });
+                
+                  move_things.animate(
+                  {
+                   left:0,
+                    top:150
+                  });
+
+                  move_things.animate(
+                  {
+                   left:0,
+                    top:0
+                  });
+             });
+
+
+            });
+
+            // rotate like a planet 
+
+            $(document).ready(function() {
+              $('#move-Round').click(function(){
+                 animateCircle();
+              });
+
+              //stop
+              $('#stop1').click(function(){
+                $('.container3').stop();
+              });
+              
+         });     
+
+       var phi = 0;     
+       var int = 2 * (Math.PI) / 1000;     
+
+       function animateCircle() {     
+
+        phi = (phi >= 2 * (Math.PI)) ? 0 : (phi + int);     
+
+        var $m = 350 - 150 * Math.cos(phi);     
+
+        var $n = 200 - 150 * Math.sin(phi);     
+
+        $(".container3").animate({
+            marginLeft: $m + 'px',
+            marginTop: $n + 'px'
+        }, 1, animateCircle);     
+
+    }
+
+
+    </script>
+    
+   <style>
+      /* body{
+        margin: 30px;
+        padding:30px;
+
+      } */
+
+      .container{
+        margin-top: 10px;
+        padding: 10px;
+        color:black;
+        background-color: white;
+        text-align: center;
+
+      }
+      .container1{
+        margin-top: 20px;
+        width:30%;
+        padding: 30px;
+        height: 100px;
+        background-image: url(img/earth.jpg);
+        background-repeat: no-repeat;
+         background-size: contain;
+
+        align-items: center;
+      }
+
+      .container2{
+        margin-bottom: 20px;
+        margin-left: 80px;
+        width:30%;
+        padding: 30px;
+        height: 60px;
+        background-image: url(img/moon.png);
+        background-repeat: no-repeat;
+         background-size: contain;
+
+      }
+
+      button{
+       padding: 5px;
+       color: black;
+       background-color: greenyellow;
+      }
+      .right{
+        margin: 5px;
+        float:right;
+        
+      }
+
+      .container3{
+        margin-top: 50px;
+        width:30%;
+        padding: 30px;
+        height: 70px;
+        background-image: url(img/noon_12.png);
+        background-repeat: no-repeat;
+         background-size: contain;
+       
+       
+			position:relative;
+        padding: 30px;
+      }
+      </style>
+
+
+
+</body>
+</html>
